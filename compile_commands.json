@@ -1,0 +1,27 @@
+[
+    {
+        "directory": "/home/jens/Documents/academic/n3cat/host-dsp",
+        "command": "clang -I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src -std=c99 -Wall -Wextra -c simple_hackrf_rx.c -o simple_hackrf_rx.o",
+        "file": "/home/jens/Documents/academic/n3cat/host-dsp/simple_hackrf_rx.c"
+    },
+    {
+        "directory": "/home/jens/Documents/academic/n3cat/host-dsp",
+        "command": "clang -I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src -std=c99 -Wall -Wextra -lm -c hackrf_rx_processor.c -o hackrf_rx_processor.o",
+        "file": "/home/jens/Documents/academic/n3cat/host-dsp/hackrf_rx_processor.c"
+    },
+    {
+        "directory": "/home/jens/Documents/academic/n3cat/host-dsp",
+        "command": "clang -I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src -std=c99 -Wall -Wextra -lpthread -lm -c hackrf_rx_threaded.c -o hackrf_rx_threaded.o",
+        "file": "/home/jens/Documents/academic/n3cat/host-dsp/hackrf_rx_threaded.c"
+    },
+    {
+        "directory": "/home/jens/Documents/academic/n3cat/host-dsp",
+        "command": "clang++ -I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src -std=c++17 -Wall -Wextra -c hackrf_rx.cpp -o hackrf_rx.o",
+        "file": "/home/jens/Documents/academic/n3cat/host-dsp/hackrf_rx.cpp"
+    },
+    {
+        "directory": "/home/jens/Documents/academic/n3cat/host-dsp",
+        "command": "clang++ -I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src -std=c++17 -Wall -Wextra -c main.cpp -o main.o",
+        "file": "/home/jens/Documents/academic/n3cat/host-dsp/main.cpp"
+    }
+]

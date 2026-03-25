@@ -1,0 +1,20 @@
+CompileFlags:
+  Add:
+    - "-I/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src"
+    - "-Wall"
+    - "-Wextra"
+    - "-Wno-unused-parameter"
+  CompilationDatabase: .
+
+InlayHints:
+  Enabled: true
+  ParameterHints: true
+  TypeHints: true
+
+Diagnostics:
+  ClangTidy:
+    Add: [clang-diagnostic-implicit-function-declaration]
+  Suppress: []
+
+Index:
+  Background: Build

@@ -1,0 +1,15 @@
+{
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}",
+    "/home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src"
+  ],
+  "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+  "C_Cpp.codeAnalysis.enabled": true,
+  "C_Cpp.codeAnalysis.runAutomatically": true,
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools",
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true
+}
