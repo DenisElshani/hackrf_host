@@ -36,7 +36,7 @@ int rx_callback(hackrf_transfer *transfer) {
 int main(int argc, char **argv) {
   try {
     // Configuration
-    uint64_t frequency = 100e6;  // 100 MHz
+    uint64_t frequency = 915e6;  // 100 MHz
     uint32_t sample_rate = 10e6; // 10 MSPS
     uint32_t lna_gain = 32;      // dB
     uint32_t vga_gain = 20;      // dB
