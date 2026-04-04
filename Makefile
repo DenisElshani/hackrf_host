@@ -1,10 +1,10 @@
 # Makefile for HackRF examples
 # Set up paths
-HACKRF_INCLUDE := /home/jens/Documents/academic/n3cat/hackrf/host/libhackrf/src
-HACKRF_LIB := /home/jens/Documents/academic/n3cat/CustomHackRF/hackrf/host/build/libhackrf/src
+HACKRF_INCLUDE := /home/elsha/UGent/ComputerSciences/tweedeMaster/Barcelona/HackerRF/hackrf/host/libhackrf/src
+HACKRF_LIB := /home/elsha/UGent/ComputerSciences/tweedeMaster/Barcelona/HackerRF/hackrf/host/build/libhackrf/src
 CFLAGS := -I$(HACKRF_INCLUDE) -std=c99 -Wall -Wextra -Wno-unused-parameter
 CXXFLAGS := -I$(HACKRF_INCLUDE) -std=c++17 -Wall -Wextra -Wno-unused-parameter
-LDFLAGS := -L$(HACKRF_LIB) -lhackrf
+LDFLAGS := -L$(HACKRF_LIB) -lhackrf -lusb-1.0 -lpthread
 
 # Compilers
 CC := gcc

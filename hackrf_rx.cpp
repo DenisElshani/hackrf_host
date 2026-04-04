@@ -36,10 +36,10 @@ int rx_callback(hackrf_transfer *transfer) {
 int main(int argc, char **argv) {
   try {
     // Configuration
-    uint64_t frequency = 915e6;  // 100 MHz
-    uint32_t sample_rate = 10e6; // 10 MSPS
+    uint64_t frequency = 915000000;  // 100 MHz
+    uint32_t sample_rate = 5000000; // 10 MSPS
     uint32_t lna_gain = 32;      // dB
-    uint32_t vga_gain = 20;      // dB
+    uint32_t vga_gain = 30;      // dB
     const char *serial = nullptr;
 
     // Parse arguments
