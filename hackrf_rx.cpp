@@ -17,19 +17,33 @@ void signal_handler(int sig) {
 }
 
 // global IQ buffer
-IQBuffer iq_buffer(1024);
+IQBuffer iq_buffer(10000000000);
+
+//int rx_callback(hackrf_transfer *transfer) {
+//  if (transfer == nullptr || transfer->buffer == nullptr) {
+//    std::cerr << "ERROR: Null transfer or buffer\n";
+//    return -1;
+//  }
+//  size_t num_samples = transfer->valid_length / 2; // 2 bytes per sample
+//  for (size_t i = 0; i < num_samples; i++) {
+//    int8_t I = transfer->buffer[2 * i];
+//    int8_t Q = transfer->buffer[2 * i + 1];
+//    iq_buffer.push(I, Q);
+//  }
+//  return 0;
+//}
 
 int rx_callback(hackrf_transfer *transfer) {
   if (transfer == nullptr || transfer->buffer == nullptr) {
-    std::cerr << "ERROR: Null transfer or buffer\n";
-    return -1;
+      return -1;
   }
-  size_t num_samples = transfer->valid_length / 2; // 2 bytes per sample
-  for (size_t i = 0; i < num_samples; i++) {
-    int8_t I = transfer->buffer[2 * i];
-    int8_t Q = transfer->buffer[2 * i + 1];
-    iq_buffer.push(I, Q);
-  }
+
+  // Number of I/Q pairs
+  size_t num_samples = transfer->valid_length / 2; 
+  
+  // Call the new block-push function
+  iq_buffer.push_block(transfer->buffer, num_samples);
+  
   return 0;
 }
 
@@ -38,8 +52,8 @@ int main(int argc, char **argv) {
     // Configuration
     uint64_t frequency = 915000000;  // 100 MHz
     uint32_t sample_rate = 5000000; // 10 MSPS
-    uint32_t lna_gain = 32;      // dB
-    uint32_t vga_gain = 30;      // dB
+    uint32_t lna_gain = 36;      // dB
+    uint32_t vga_gain = 36;      // dB
     const char *serial = nullptr;
 
     // Parse arguments
