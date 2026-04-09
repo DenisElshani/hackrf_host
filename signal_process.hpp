@@ -66,8 +66,9 @@ public:
 
   void process(IQBuffer &buffer) {
     // 1. Grab a large batch (e.g., 65k samples) in ONE lock
-    auto batch = buffer.pop_batch(65536);
-    
+    auto start = std::chrono::high_resolution_clock::now();
+    auto batch = buffer.pop_batch(16384);
+    batch.size();
     for (const auto& iq : batch) {
       // const auto [I, Q] = convert_sample(iq->first, iq->second);
       const uint32_t I = iq.first;
@@ -141,6 +142,7 @@ public:
             //std::cout << "Maximum energy: " << sliding_sum<<"\n";
             //std::cout << "\n Sampling window found, synchronizing.... \n";
             state = STATE_LOCKED;
+            std::cout<<"\n--------------------LOCKED STATE--------------------\n";
             // SYNC OFFSET: We are 'samples_since_max' past the peak.
             // We want our next bit window to start exactly half a bit after the peak.
             // Or simply reset sample_count to align to this peak center.
@@ -153,7 +155,7 @@ public:
           break;
 
           case STATE_LOCKED:
-          
+
           //const uint32_t mag2_avg = mag2_sum / RX_BIT_SAMPLES;
           //noise_floor = (noise_floor * 15 + mag2_avg) / 16;
           //const uint32_t adaptive_threshold = noise_floor + RX_THRESHOLD_MARGIN;
@@ -189,6 +191,14 @@ public:
           }
           break;
       }
+    }
+    // 3. Stop the clock
+    auto end = std::chrono::high_resolution_clock::now();
+    // Explicit type for a duration in milliseconds
+    std::chrono::duration<double, std::milli> elapsed = end - start;
+    if(batch.size() != 0){
+    std::cout << "\nBatch time of " << batch.size() <<" samples: " << elapsed.count() << " milliseconds ; Buffer occupation = " << buffer.get_count() << "\n";
+      
     }
   }
 };

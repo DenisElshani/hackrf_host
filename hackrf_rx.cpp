@@ -17,7 +17,7 @@ void signal_handler(int sig) {
 }
 
 // global IQ buffer
-IQBuffer iq_buffer(10000000000);
+IQBuffer iq_buffer(330000);
 
 //int rx_callback(hackrf_transfer *transfer) {
 //  if (transfer == nullptr || transfer->buffer == nullptr) {
